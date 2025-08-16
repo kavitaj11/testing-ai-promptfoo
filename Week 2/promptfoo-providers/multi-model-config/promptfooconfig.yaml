@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+
+# Learn more about building a configuration: https://promptfoo.dev/docs/configuration/guide
+
+description: "My eval"
+
+providers:
+  - id: openai:gpt-4.1
+    config:
+      temperature: 0.7
+      max_tokens: 150
+  - id: openai:gpt-4o-mini
+    config:
+      temperature: 1
+  - id: openai:gpt-5
+    config:
+      temperature: 1
+      max_completion_tokens: 150
+  - id: anthropic:messages:claude-sonnet-4-20250514
+    config:
+      temperature: 1
+  # LOCAL MODEL served by LM Studio (OpenAI-compatible)
+  - id: openai:qwen3-1.7b                                 # generic chat endpoint
+    config:
+      apiBaseUrl: http://localhost:1234/v1          
+      apiKey: lmstudio                              # any string works
+      model: qwen3-1.7b                 # from GET /v1/models
+      temperature: 0.7
+      max_tokens: 300
+
+    
+  
+prompts:
+  - "Write a short review about {{topic}}"
+
+tests:
+  - vars:
+     topic: "selenium 4" 
+    assert:
+      - type: contains
+        value: "browser"
+  - vars: 
+     topic: "REST Assured"
+    assert:
+      - type: contains
+        value: "HTTP request"
+ 
+
