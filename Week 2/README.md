@@ -1,21 +1,25 @@
-# Week 2: Variable Prompts with External References
+# 📘 Week 2: Modular Prompts with Variables & External References
 
-This week focuses on creating modular prompts that use variables and external file references. This approach makes prompts more maintainable and reusable.
+## 📖 Overview
+This week demonstrates how to build **modular prompts** using variables and external file references.  
+The approach ensures prompts are reusable, maintainable, and easy to extend.
 
-## Project Structure
+---
 
-```
+## 📂 Project Structure
+```plaintext
 week_2/
-├── promptfooconfig.yaml    # Main configuration file
-├── providers/             # Provider configurations
-│   ├── providers.yaml     # Base providers
-│   └── providers_1_temp.yaml # Additional providers
-├── prompts/              # Prompt templates
-│   ├── prompt_1.txt      # Description prompt
-│   └── prompt_2.txt      # Story prompt
-├── tests/               # Test cases and assertions
-│   └── tests.yaml       # Test definitions
-└── results.html         # Generated test results
+├── promptfooconfig.yaml         # Main configuration file
+├── providers/                   # Provider configurations
+│   ├── providers.yaml           # Default providers
+│   └── providers_spec.yaml      # Additional provider setup
+├── prompts/                     # Prompt templates
+│   ├── prompt_1.txt             # Description prompt
+│   └── prompt_2.txt             # Story prompt
+├── tests/                       # Test cases & assertions
+│   └── tests.yaml
+└── results.html                 # Generated evaluation results
+
 ```
 
 ## Configuration
@@ -28,7 +32,6 @@ prompts:
 
 providers:
   - file://providers/providers.yaml
-  - file://providers/providers_1_temp.yaml
   
 tests:
   - file://tests/tests.yaml
@@ -99,14 +102,11 @@ Example:
 2. Use clear variable names
 3. Include specific assertions
 4. Test different topics
-5. Check sentence count matches requirements
+5. Validate style, tone, or sentence count as required
 
 ## File References
 
 - Use `file://` prefix for referencing files in config
-- Keep related files in appropriate directories
-- Use clear file naming conventions
+- Group files in logical directories (prompts/, providers/, tests/)
+- Use consistent and descriptive filenames
 
----
-Created by Jaime Mantilla, MSIT + AI  
-Last Updated: 08/2025 
